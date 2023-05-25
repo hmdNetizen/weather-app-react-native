@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
 import * as Location from "expo-location";
+import { TEST_KEY } from "@env";
 
 import Tabs from "./src/components/Tabs";
 
@@ -9,6 +10,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
+  console.log(TEST_KEY);
 
   useEffect(() => {
     (async () => {
