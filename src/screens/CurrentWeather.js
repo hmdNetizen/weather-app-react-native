@@ -15,21 +15,21 @@ export default function CurrentWeather({ currentWeather }) {
     main: { feels_like, temp, temp_max, temp_min },
     weather,
   } = currentWeather;
-  const weatherCondition = weather[0].main;
+  const weatherCondition = weather[0]?.main;
   return (
     <SafeAreaView
       style={[
         styles.safeArea,
-        { backgroundColor: weatherType[weatherCondition].backgroundColor },
+        { backgroundColor: weatherType[weatherCondition]?.backgroundColor },
       ]}
     >
       <View style={styles.container}>
         <Feather
           size={100}
-          name={weatherType[weatherCondition].icon}
+          name={weatherType[weatherCondition]?.icon}
           color="#fff"
         />
-        <Text style={styles.temp}>{temp}</Text>
+        <Text style={styles.temp}>{`${temp}°`}</Text>
         <Text style={styles.feels}>Feels like {feels_like}</Text>
         <RowText
           messageOne={`High: ${temp_max} `}
@@ -41,7 +41,7 @@ export default function CurrentWeather({ currentWeather }) {
       </View>
       <RowText
         messageOne={weather[0].description}
-        messageTwo={weatherType[weatherCondition].message}
+        messageTwo={weatherType[weatherCondition]?.message}
         containerStyles={styles.bodyWrapper}
         messageOneStyles={styles.description}
         messageTwoStyles={styles.message}
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   safeArea: {
-    backgroundColor: "pink",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flex: 1,
   },

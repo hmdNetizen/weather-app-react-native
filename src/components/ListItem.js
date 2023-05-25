@@ -8,7 +8,7 @@ import { weatherType } from "../utilities/weatherTypes";
 const ListItem = ({ dt_txt, main: { temp_min, temp_max }, condition }) => {
   return (
     <View style={styles.item}>
-      <Feather name={weatherType[condition].icon} size={40} color="#fff" />
+      <Feather name={weatherType[condition]?.icon} size={40} color="#fff" />
       <View style={styles.dataTextWrapper}>
         <Text style={styles.date}>{moment(dt_txt).format("dddd")}</Text>
         <Text style={styles.date}>{moment(dt_txt).format("h:mm:ss a")}</Text>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "pink",
+    backgroundColor: "indianred",
     borderWidth: 5,
   },
   temp: {
